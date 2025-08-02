@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>setap kagak nungga atau final build mungkin 🤔</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#f7f8fa;--bg-elevate:#fff;--text:#1e293b;--danger:#ef4444;
+  --success:#22c55e;--primary:#2563eb;--border:#e2e8f0;
+}
+[data-theme=dark]{
+  --bg:#0f172a;--bg-elevate:#1e293b;--text:#f1f5f9;--border:#334155;
+}
+*{box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
+body{margin:0;padding:40px 20px;background:var(--bg);color:var(--text);transition:.3s}
+.wrapper{max-width:720px;margin:auto}
+.card{background:var(--bg-elevate);border:1px solid var(--border);border-radius:12px;padding:32px;box-shadow:0 10px 15px -3px rgb(0 0 0/.1)}
+h1{text-align:center;margin-bottom:8px}
+.subtitle{text-align:center;color:var(--text-muted);margin-bottom:32px}
+.grid{display:grid;gap:24px}
+label{font-weight:600;margin-bottom:6px;display:block}
+select,input{width:100%;padding:12px;border:1px solid var(--border);border-radius:8px;font-size:1rem;background:var(--bg-elevate);color:var(--text)}
+.danger{color:var(--danger);font-weight:600;margin-top:4px;display:none}
+.success{color:var(--success);font-weight:600;margin-top:4px;display:none}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:12px 24px;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:.3s}
+.btn.primary{background:var(--primary);color:#fff}
+.btn.primary:hover{background:#1d4ed8}
+.btn.secondary{background:transparent;color:var(--primary);border:1px solid var(--primary)}
+.btn.secondary:hover{background:var(--primary)15}
+.theme-toggle{position:fixed;top:20px;right:20px;background:none;border:none;font-size:1.5rem;cursor:pointer}
+.record{margin-top:40px}
+.record ul{list-style:none;padding:0}
+.record li{background:var(--bg-elevate);border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:8px;cursor:pointer}
+@media(max-width:600px){.card{padding:24px 20px}}
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle">🌗</button>
+
+<div class="wrapper">
+  <h1>Set mu bre</h1>
+  <p class="subtitle"> 🤔 5 juta build cukup sebenernya tapi kita ngambil final nya</p>
+
+  <form id="pcForm" class="card">
+    <!-- CPU -->
+    <div>
+      <label for="cpu">CPU (Brand & Generation)</label>
+      <select id="cpu" required>
+        <option value="">-- Pilih CPU --</option>
+        <optgroup label="Ryzen 3">
+          <option value="Ryzen 3 1200|AM4">Ryzen 3 1200 (AM4)</option>
+          <option value="Ryzen 3 2200G|AM4">Ryzen 3 2200G (AM4)</option>
+          <option value="Ryzen 3 3200G|AM4">Ryzen 3 3200G (AM4)</option>
+          <option value="Ryzen 3 8300G|AM5">Ryzen 3 8300G (AM5)</option>
+        </optgroup>
+        <optgroup label="Ryzen 5">
+          <option value="Ryzen 5 1600|AM4">Ryzen 5 1600 (AM4)</option>
+          <option value="Ryzen 5 5600X|AM4">Ryzen 5 5600X (AM4)</option>
+          <option value="Ryzen 5 7600X|AM5">Ryzen 5 7600X (AM5)</option>
+        </optgroup>
+        <optgroup label="Ryzen 7">
+          <option value="Ryzen 7 2700|AM4">Ryzen 7 2700 (AM4)</option>
+          <option value="Ryzen 7 5800X|AM4">Ryzen 7 5800X (AM4)</option>
+          <option value="Ryzen 7 7700|AM5">Ryzen 7 7700 (AM5)</option>
+        </optgroup>
+        <optgroup label="Ryzen 9">
+          <option value="Ryzen 9 3900X|AM4">Ryzen 9 3900X (AM4)</option>
+          <option value="Ryzen 9 5900X|AM4">Ryzen 9 5900X (AM4)</option>
+          <option value="Ryzen 9 7950X|AM5">Ryzen 9 7950X (AM5)</option>
+        </optgroup>
+        <optgroup label="Intel Core i3">
+          <option value="Core i3-10100F|LGA1200">Core i3-10100F (LGA1200)</option>
+          <option value="Core i3-12100F|LGA1700">Core i3-12100F (LGA1700)</option>
+          <option value="Core i3-14100|LGA1700">Core i3-14100 (LGA1700)</option>
+        </optgroup>
+        <optgroup label="Intel Core i5">
+          <option value="Core i5-10400F|LGA1200">Core i5-10400F (LGA1200)</option>
+          <option value="Core i5-12400F|LGA1700">Core i5-12400F (LGA1700)</option>
+          <option value="Core i5-14400F|LGA1700">Core i5-14400F (LGA1700)</option>
+        </optgroup>
+        <optgroup label="Intel Core i7">
+          <option value="Core i7-10700KF|LGA1200">Core i7-10700KF (LGA1200)</option>
+          <option value="Core i7-12700KF|LGA1700">Core i7-12700KF (LGA1700)</option>
+          <option value="Core i7-14700KF|LGA1700">Core i7-14700KF (LGA1700)</option>
+        </optgroup>
+        <optgroup label="Intel Core i9">
+          <option value="Core i9-10900KF|LGA1200">Core i9-10900KF (LGA1200)</option>
+          <option value="Core i9-12900KF|LGA1700">Core i9-12900KF (LGA1700)</option>
+          <option value="Core i9-14900KF|LGA1700">Core i9-14900KF (LGA1700)</option>
+        </optgroup>
+      </select>
+      <div class="danger" id="cpuDanger">Danger: Socket CPU tidak cocok!</div>
+    </div>
+
+    <!-- Motherboard -->
+    <div>
+      <label for="motherboard">Motherboard (Chipset & Socket)</label>
+      <select id="motherboard" required>
+        <option value="">-- Pilih Motherboard --</option>
+        <optgroup label="Socket AM4">
+          <option value="B450|AM4">B450 (AM4)</option>
+          <option value="B550|AM4">B550 (AM4)</option>
+          <option value="X570|AM4">X570 (AM4)</option>
+        </optgroup>
+        <optgroup label="Socket AM5">
+          <option value="B650|AM5">B650 (AM5)</option>
+          <option value="X670|AM5">X670 (AM5)</option>
+        </optgroup>
+        <optgroup label="Socket LGA1200">
+          <option value="B460|LGA1200">B460 (LGA1200)</option>
+          <option value="Z490|LGA1200">Z490 (LGA1200)</option>
+        </optgroup>
+        <optgroup label="Socket LGA1700">
+          <option value="B660|LGA1700">B660 (LGA1700)</option>
+          <option value="Z790|LGA1700">Z790 (LGA1700)</option>
+        </optgroup>
+      </select>
+      <div class="danger" id="mbDanger">Danger: Socket Motherboard tidak cocok!</div>
+      <div class="success" id="mbSuccess">✓ Socket cocok</div>
+    </div>
+
+    <!-- GPU -->
+    <div>
+      <label for="gpu">GPU</label>
+      <select id="gpu" required>
+        <option value="">-- Pilih GPU --</option>
+        <option value="RTX 3050">RTX 3050 8 GB</option>
+        <option value="RTX 3060">RTX 3060 12 GB</option>
+        <option value="RTX 4060">RTX 4060 8 GB</option>
+        <option value="RTX 4070">RTX 4070 12 GB</option>
+        <option value="RTX 4080">RTX 4080 16 GB</option>
+        <option value="RX 6600">RX 6600 8 GB</option>
+        <option value="RX 7600">RX 7600 8 GB</option>
+      </select>
+    </div>
+
+    <!-- RAM -->
+    <div>
+      <label for="ram">RAM</label>
+      <select id="ram" required>
+        <option value="">-- Pilih RAM --</option>
+        <option value="2x8 GB DDR4 3200">2×8 GB DDR4-3200</option>
+        <option value="1x16 GB DDR4 3200">1×16 GB DDR4-3200</option>
+        <option value="2x16 GB DDR4 3200">2×16 GB DDR4-3200</option>
+        <option value="2x16 GB DDR5 5600">2×16 GB DDR5-5600</option>
+      </select>
+    </div>
+
+    <!-- Storage -->
+    <div>
+      <label for="storage">Penyimpanan</label>
+      <select id="storage" required>
+        <option value="">-- Pilih Storage --</option>
+        <option value="SSD 512 GB NVMe">SSD 512 GB NVMe</option>
+        <option value="SSD 1 TB NVMe">SSD 1 TB NVMe</option>
+        <option value="HDD 1 TB 7200rpm">HDD 1 TB 7200 rpm</option>
+        <option value="SSD 512 GB + HDD 1 TB">SSD 512 GB + HDD 1 TB</option>
+      </select>
+    </div>
+
+    <!-- PSU -->
+    <div>
+      <label for="psu">Power Supply</label>
+      <select id="psu" required>
+        <option value="">-- Pilih PSU --</option>
+        <option value="450 W 80+ Bronze">450 W 80+ Bronze</option>
+        <option value="550 W 80+ Bronze">550 W 80+ Bronze</option>
+        <option value="650 W 80+ Gold">650 W 80+ Gold</option>
+        <option value="750 W 80+ Gold">750 W 80+ Gold</option>
+      </select>
+    </div>
+
+    <!-- Case -->
+    <div>
+      <label for="case">Casing</label>
+      <select id="case" required>
+        <option value="">-- Pilih Casing --</option>
+        <option value="mATX Mini Tower">mATX Mini Tower</option>
+        <option value="ATX Mid Tower RGB">ATX Mid Tower RGB</option>
+        <option value="ATX Full Tower">ATX Full Tower</option>
+      </select>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn primary">Kirim & WhatsApp</button>
+      <button type="reset" class="btn secondary">Reset</button>
+    </div>
+  </form>
+
+  <!-- Record -->
+  <div class="record">
+    <h2>Record Pengisian Sebelumnya</h2>
+    <ul id="recordList"></ul>
+  </div>
+</div>
+
+<script>
+/* ---------- Theme ---------- */
+const root=document.documentElement;
+const toggle=document.getElementById('themeToggle');
+toggle.onclick=()=>{
+  const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+  root.setAttribute('data-theme',next);
+  localStorage.setItem('theme',next);
+};
+
+/* ---------- Socket Check ---------- */
+const cpu=document.getElementById('cpu');
+const mb=document.getElementById('motherboard');
+const cpuDanger=document.getElementById('cpuDanger');
+const mbDanger=document.getElementById('mbDanger');
+const mbSuccess=document.getElementById('mbSuccess');
+
+function checkSocket(){
+  if(!cpu.value || !mb.value) return;
+  const cpuSocket=cpu.value.split('|')[1];
+  const mbSocket=mb.value.split('|')[1];
+  const ok=cpuSocket===mbSocket;
+  cpuDanger.style.display=ok?'none':'block';
+  mbDanger.style.display=ok?'none':'block';
+  mbSuccess.style.display=ok?'block':'none';
+}
+cpu.addEventListener('change',checkSocket);
+mb.addEventListener('change',checkSocket);
+
+/* ---------- Local Storage ---------- */
+const form=document.getElementById('pcForm');
+const recordList=document.getElementById('recordList');
+const records=JSON.parse(localStorage.getItem('pcRecords')||'[]');
+
+function renderRecords(){
+  recordList.innerHTML='';
+  records.forEach((r,i)=>{
+    const li=document.createElement('li');
+    li.innerHTML=`${r.cpu.split('|')[0]} · ${r.gpu} · ${r.ram}`;
+    li.onclick=()=>fillForm(r);
+    recordList.appendChild(li);
+  });
+}
+renderRecords();
+
+function fillForm(r){
+  cpu.value=r.cpu;
+  mb.value=r.motherboard;
+  document.getElementById('gpu').value=r.gpu;
+  document.getElementById('ram').value=r.ram;
+  document.getElementById('storage').value=r.storage;
+  document.getElementById('psu').value=r.psu;
+  document.getElementById('case').value=r.case;
+  checkSocket();
+}
+
+/* ---------- Submit ---------- */
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  if(!cpu.value||!mb.value){
+    alert('Lengkapi CPU & Motherboard dulu!');
+    return;
+  }
+  const data={
+    cpu:cpu.value,
+    motherboard:mb.value,
+    gpu:document.getElementById('gpu').value,
+    ram:document.getElementById('ram').value,
+    storage:document.getElementById('storage').value,
+    psu:document.getElementById('psu').value,
+    case:document.getElementById('case').value
+  };
+  records.unshift(data);
+  localStorage.setItem('pcRecords',JSON.stringify(records));
+  renderRecords();
+  /* WhatsApp */
+  const text=`Ini coy setap guwa:%0A`+
+    `CPU: ${data.cpu.split('|')[0]}%0A`+
+    `Motherboard: ${data.motherboard.split('|')[0]}%0A`+
+    `GPU: ${data.gpu}%0A`+
+    `RAM: ${data.ram}%0A`+
+    `Storage: ${data.storage}%0A`+
+    `PSU: ${data.psu}%0A`+
+    `Case: ${data.case}`;
+  window.open(`https://wa.me/6282173155205?text=${text}`,'_blank');
+});
+</script>
+</body>
+</html>
